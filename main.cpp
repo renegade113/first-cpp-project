@@ -1,98 +1,108 @@
 #include <iostream>
+#include <limits>
 using namespace std;
 
 int main()
 {
-    // -------------------------------
-    // 1. Определение четности числа
-    // -------------------------------
+    setlocale(LC_ALL, "Russian");
 
-    int a;
+    // 1. Основные типы данных
 
-    cout << "Введите число: ";
-    cin >> a;
+    cout << "=== ТИПЫ ДАННЫХ ===" << endl;
 
-    // Если остаток от деления на 2 равен 0
-    if (a % 2 == 0)
-        cout << "Число четное" << endl;
-    else
-        cout << "Число нечетное" << endl;
+    // int - целое число
+    cout << "\nТип int:" << endl;
+    cout << "Размер: " << sizeof(int) << " байт" << endl;
+    cout << "Минимум: " << numeric_limits<int>::min() << endl;
+    cout << "Максимум: " << numeric_limits<int>::max() << endl;
 
-    // -------------------------------
-    // 2. Определение простоты числа
-    // -------------------------------
+    // short - короткое целое число
+    cout << "\nТип short:" << endl;
+    cout << "Размер: " << sizeof(short) << " байт" << endl;
+    cout << "Минимум: " << numeric_limits<short>::min() << endl;
+    cout << "Максимум: " << numeric_limits<short>::max() << endl;
 
-    int b;
-    bool simple = true;
+    // long long - большое целое число
+    cout << "\nТип long long:" << endl;
+    cout << "Размер: " << sizeof(long long) << " байт" << endl;
+    cout << "Минимум: " << numeric_limits<long long>::min() << endl;
+    cout << "Максимум: " << numeric_limits<long long>::max() << endl;
 
-    cout << "Введите число: ";
-    cin >> b;
+    // float - вещественное число
+    cout << "\nТип float:" << endl;
+    cout << "Размер: " << sizeof(float) << " байт" << endl;
+    cout << "Минимум: " << numeric_limits<float>::lowest() << endl;
+    cout << "Максимум: " << numeric_limits<float>::max() << endl;
 
-    // Проверяем, делится ли число на другие числа
-    for (int i = 2; i < b; i++)
-    {
-        if (b % i == 0)
-            simple = false;
-    }
+    // double - вещественное число повышенной точности
+    cout << "\nТип double:" << endl;
+    cout << "Размер: " << sizeof(double) << " байт" << endl;
+    cout << "Минимум: " << numeric_limits<double>::lowest() << endl;
+    cout << "Максимум: " << numeric_limits<double>::max() << endl;
 
-    if (simple)
-        cout << "Число простое" << endl;
-    else
-        cout << "Число не простое" << endl;
+    // char - символ
+    cout << "\nТип char:" << endl;
+    cout << "Размер: " << sizeof(char) << " байт" << endl;
 
-    // -------------------------------
-    // 3. Сумма цифр числа
-    // -------------------------------
+    // bool - логический тип
+    cout << "\nТип bool:" << endl;
+    cout << "Размер: " << sizeof(bool) << " байт" << endl;
 
-    int c;
-    int sum = 0;
+    // 2. Расположение данных в памяти
 
-    cout << "Введите число: ";
-    cin >> c;
+    cout << "\n=== ПАМЯТЬ ===" << endl;
 
-    // Пока в числе остаются цифры
-    while (c > 0)
-    {
-        // Берем последнюю цифру
-        sum = sum + c % 10;
+    int a = 10;
+    int b = 20;
 
-        // Убираем последнюю цифру
-        c = c / 10;
-    }
+    // Выводим адреса переменных в памяти
+    cout << "Адрес переменной a: " << &a << endl;
+    cout << "Адрес переменной b: " << &b << endl;
 
-    cout << "Сумма цифр: " << sum << endl;
+    // Выводим размер переменной
+    cout << "Переменная a занимает: " << sizeof(a) << " байт" << endl;
 
-    // --------------------------------------
-    // 4. Минимальная и максимальная цифра
-    // --------------------------------------
+    // 3. Арифметические операции
 
-    int d;
-    int min = 9;
-    int max = 0;
+    cout << "\n=== АРИФМЕТИЧЕСКИЕ ОПЕРАЦИИ ===" << endl;
 
-    cout << "Введите число: ";
-    cin >> d;
+    cout << "a + b = " << a + b << endl;
+    cout << "a - b = " << a - b << endl;
+    cout << "a * b = " << a * b << endl;
+    cout << "b / a = " << b / a << endl;
+    cout << "b % a = " << b % a << endl;
 
-    // Перебираем цифры числа
-    while (d > 0)
-    {
-        // Получаем последнюю цифру
-        int x = d % 10;
+    // 4. Операции сравнения
 
-        // Ищем минимальную цифру
-        if (x < min)
-            min = x;
+    cout << "\n=== СРАВНЕНИЯ ===" << endl;
 
-        // Ищем максимальную цифру
-        if (x > max)
-            max = x;
+    cout << "a == b: " << (a == b) << endl;
+    cout << "a != b: " << (a != b) << endl;
+    cout << "a > b: " << (a > b) << endl;
+    cout << "a < b: " << (a < b) << endl;
 
-        // Убираем последнюю цифру
-        d = d / 10;
-    }
+    // 5. Логические операции
 
-    cout << "Минимальная цифра: " << min << endl;
-    cout << "Максимальная цифра: " << max << endl;
+    cout << "\n=== ЛОГИЧЕСКИЕ ОПЕРАЦИИ ===" << endl;
+
+    cout << "true && false: " << (true && false) << endl;
+    cout << "true || false: " << (true || false) << endl;
+    cout << "!true: " << (!true) << endl;
+
+    // 6. Битовые операции
+
+    cout << "\n=== БИТОВЫЕ ОПЕРАЦИИ ===" << endl;
+
+    int x = 5;
+    int y = 3;
+
+    cout << "x & y = " << (x & y) << endl;
+    cout << "x | y = " << (x | y) << endl;
+    cout << "x ^ y = " << (x ^ y) << endl;
+    cout << "x << 1 = " << (x << 1) << endl;
+    cout << "x >> 1 = " << (x >> 1) << endl;
+
+    cout << "\nПрограмма завершена." << endl;
 
     return 0;
 }
